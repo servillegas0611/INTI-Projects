@@ -76,6 +76,9 @@ Keithley.read_termination = '\n'
 
 #Keithley.write(':SENS:VOLT:PROT 21')   # Current protection at 100 mA
 Keithley.write(':OUTP ON')              # Enable output
+Keithley.write(':SENS:'+ parameter + ':NPLC 10')         # Number of power line cycles (NPLC) for current measurement       
+
+
 
 values_float = []
 rango= Keithley.query(':SENS:{}:RANG?'.format(parameter)) 
