@@ -4,11 +4,32 @@ import time
 import struct
 from datetime import datetime
 
+'''
+# ==============================================================
+# IMPORTANT:
+# - Modify the variable "index" below:
+#       0 → Voltage source mode
+#       1 → Current source mode
+# - Adjust the "rangos_v" or "rangos_i" lists according to
+#   the desired measurement ranges.
+# - Adjust the "time.sleep()" values for the desired waiting time.
+# ============================================================== 
+
+'''
+
+
+
+##########################################################################
+
+
 index=1 # =0 voltage source, =1 current source
 # ==== Initial Configuration ====
 rangos_i = [         '1E-3', '-1E-3', '10E-3', '-10E-3', '100E-3', '-100E-3']
 rangos_v = [         '100e-3','-100e-3','1E1', '-1E1', '10E1', '-10E1']
+measurement_time=10  # seconds
 
+
+###########################################################################
 if index==0:
     rangos=rangos_v
     units ='Volt'
@@ -52,7 +73,7 @@ for rango in rangos:
     
 
     rango_abs=abs(float(rango))
-    time.sleep (10)  
+    time.sleep (measurement_time)  
 
 # === Close instruments ===
 Keithley.write(':OUTP OFF')                        # Turn output OFF
